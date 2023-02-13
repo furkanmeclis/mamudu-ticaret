@@ -9,6 +9,6 @@ const root = createRoot(rootElement);
 
 root.render(
   <ChakraProvider>
-    <App />
+    <App ep={rootElement.getAttribute('ep')} />
   </ChakraProvider>
 );

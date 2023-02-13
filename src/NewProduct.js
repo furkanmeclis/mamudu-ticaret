@@ -10,7 +10,7 @@ import {
   Button,
   Skeleton,
 } from '@chakra-ui/react';
-const NewProduct = () => {
+const NewProduct = ({ ep }) => {
   const toast = useToast();
   const titleRef = React.useRef(null);
   const [product, setProduct] = React.useState({
@@ -21,14 +21,13 @@ const NewProduct = () => {
   });
   const [loading, setLoading] = React.useState(false);
   const submitForm = (e) => {
-    
     setLoading(true);
     e.preventDefault();
     let formdata = new FormData();
     Object.entries(product).map(([key, value]) => {
       formdata.append(key, value);
     });
-    fetch('/', {
+    fetch(ep, {
       method: 'POST',
       body: formdata,
     })
